@@ -6,17 +6,15 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Hello world'),
-            centerTitle: true,
-            elevation: 0,
-          ),
-
-          body: SingleChildScrollView(
+        appBar: AppBar(
+          title: const Text('Hello world'),
+          centerTitle: true,
+          elevation: 0,
+        ),
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-
               children: [
                 const SizedBox(height: 8),
                 TextField(
@@ -50,10 +48,12 @@ void main() {
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.bold,
                   ),
-                )
+                ),
               ],
             ),
-          )),
+          ),
+        ),
+      ),
     ),
   );
 }
