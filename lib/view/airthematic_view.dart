@@ -1,4 +1,8 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
+
+import '../model/airthematic.dart';
 
 class AirthematicView extends StatefulWidget {
   const AirthematicView({super.key});
@@ -11,6 +15,24 @@ class _AirthematicViewState extends State<AirthematicView> {
   int first = 0;
   int second = 0;
   int result = 0;
+
+  // var airthematic = ArithmeticView();
+  late Arithmetic airthematicView;
+
+  void add() {
+    airthematicView = Arithmetic();
+    setState(() {
+      result = airthematicView.add(first, second);
+    });
+  }
+
+  void sub() {
+    airthematicView = Arithmetic();
+    setState(() {
+      result = airthematicView.sub(first, second);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +72,16 @@ class _AirthematicViewState extends State<AirthematicView> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      result = first + second;
-                    });
-                  },
+                  onPressed: () {},
                   child: const Text('Add'),
+                ),
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Sub'),
                 ),
               ),
               const SizedBox(height: 8),

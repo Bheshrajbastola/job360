@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../model/simodel.dart';
+
 class SiView extends StatefulWidget {
   const SiView({super.key});
 
@@ -29,10 +31,12 @@ class _SiViewState extends State<SiView> {
                 const SizedBox(height: 8),
                 TextField(
                   onChanged: (value) {
-                    principle = double.parse(value);
+                    setState(() {
+                      principle = double.parse(value);
+                    });
                   },
                   decoration: InputDecoration(
-                    labelText: 'Enter Princpla',
+                    labelText: 'Enter Principal',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -41,7 +45,9 @@ class _SiViewState extends State<SiView> {
                 const SizedBox(height: 8),
                 TextField(
                   onChanged: (value) {
-                    time = double.parse(value);
+                    setState(() {
+                      time = double.parse(value);
+                    });
                   },
                   decoration: InputDecoration(
                     labelText: 'Enter Time',
@@ -51,7 +57,9 @@ class _SiViewState extends State<SiView> {
                 const SizedBox(height: 8),
                 TextField(
                   onChanged: (value) {
-                    rate = double.parse(value);
+                    setState(() {
+                      rate = double.parse(value);
+                    });
                   },
                   decoration: InputDecoration(
                     labelText: 'Enter Rate',
@@ -64,7 +72,8 @@ class _SiViewState extends State<SiView> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        SI = principle * time * rate / 100;
+                        SI = calculateSI(principle, time,
+                            rate); // call the function to calculate SI
                       });
                     },
                     child: Text('Calculate'),
@@ -79,7 +88,7 @@ class _SiViewState extends State<SiView> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Simple Intrest is $SI',
+                  'Simple Interest is $SI',
                   style: const TextStyle(
                     fontSize: 20,
                     fontStyle: FontStyle.italic,
