@@ -43,5 +43,3 @@ class _LoadImageViewState extends State<LoadImageView> {
 
 
 
-  git config --global user.email "swikarbaastola@gmail.com"
-  git config --global user.name "Bhesh Raj Bastola"
