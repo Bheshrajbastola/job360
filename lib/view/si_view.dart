@@ -2,101 +2,148 @@ import 'package:flutter/material.dart';
 
 import '../model/simodel.dart';
 
-class SiView extends StatefulWidget {
-  const SiView({super.key});
+class SimpleInterestView extends StatefulWidget {
+  const SimpleInterestView({super.key});
 
   @override
-  State<SiView> createState() => _SiViewState();
+  State<SimpleInterestView> createState() => _SimpleInterestViewState();
 }
 
-class _SiViewState extends State<SiView> {
-  double principle = 0;
-  double time = 0;
-  double rate = 0;
-  double SI = 0;
+class _SimpleInterestViewState extends State<SimpleInterestView> {
+  // instantiate of Simple Interest class
+  SimpleInterest simpleInterest = SimpleInterest();
 
+  double result = 0.0;
+
+  // stores values of textfield
+  final principalController = TextEditingController(text: '1200');
+  final timeController = TextEditingController(text: '5');
+  final rateController = TextEditingController(text: '2.5');
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    principalController.dispose();
+    rateController.dispose();
+    timeController.dispose();
+
+    super.dispose();
+  }
+
+  void submitAnswer() {
+    setState(() {
+      if (myKey.currentState!.validate()) {
+        result = simpleInterest.calculateSI(
+            principal: double.parse(principalController.text),
+            time: double.parse(timeController.text),
+            rate: double.parse(rateController.text));
+      }
+    });
+  }
+
+// to know the state of the Form
+  final myKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SI'),
+        title: const Text('Simple Interest Calculator'),
         centerTitle: true,
-        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                const SizedBox(height: 8),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      principle = double.parse(value);
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Principal',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Form(
+              key: myKey,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10.0,
                   ),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      time = double.parse(value);
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Time',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      rate = double.parse(value);
-                    });
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Enter Rate',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        SI = calculateSI(principle, time,
-                            rate); // call the function to calculate SI
-                      });
+                  TextFormField(
+                    controller: principalController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please, enter the principal';
+                      } else if (value.length < 2) {
+                        return 'Principal should be greater than 2 digits';
+                      }
+                      return null;
                     },
-                    child: Text('Calculate'),
-                    style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
+                    decoration: InputDecoration(
+                      hintText: 'Enter Principal',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18.0),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Simple Interest is $SI',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(
+                    height: 10.0,
                   ),
-                )
-              ],
-            )),
+                  TextFormField(
+                    controller: rateController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please, enter rate';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        hintText: 'Enter rate',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  TextFormField(
+                    controller: timeController,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please, enter time';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Enter time',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        submitAnswer();
+                      },
+                      child: const Text('CALCULATE'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    'Simple interest is $result',
+                    style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

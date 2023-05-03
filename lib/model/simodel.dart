@@ -1,4 +1,5 @@
-// formula.dart file
-double calculateSI(double principle, double time, double rate) {
-  return principle * time * rate / 100;
+class SimpleInterest {
+  double calculateSI(
+          {double principal = 1, double time = 1, double rate = 1}) =>
+      principal * time * rate * 0.01;
 }

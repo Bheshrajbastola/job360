@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:job360/view/changeName.dart';
 import 'package:job360/view/circle_view.dart';
+import 'package:job360/view/coloum_view.dart';
+import 'package:job360/view/container-view.dart';
 import 'package:job360/view/dashboard.dart';
+import 'package:job360/view/load-image.dart';
+import 'package:job360/view/output.dart';
+import 'package:job360/view/radiobutton.dart';
+import 'package:job360/view/richtext_view.dart';
 import 'package:job360/view/si_view.dart';
+
 import 'view/airthematic_view.dart';
 
 class App extends StatelessWidget {
@@ -16,9 +23,15 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => const DashboardView(),
         '/airthematicroute': (context) => const AirthematicView(),
-        '/SIRoute': (context) => const SiView(),
+        '/SIRoute': (context) => const SimpleInterestView(),
         '/CircleRoute': (context) => const CircleArea(),
-        '/NamedRoute': (context) => MyApp(),
+        '/NamedRoute': (context) => const Name(),
+        '/TextRoute': (context) => const RichTextView(),
+        '/ColoumnRoute': (context) => const ColoumView(),
+        '/radioRoute': (context) => const radiobtn(),
+        '/outputRoute': (context) => const Output(),
+        '/containerRoute': (context) => const container(),
+        '/imageRoute': (context) => const LoadImageView(),
       },
     );
   }

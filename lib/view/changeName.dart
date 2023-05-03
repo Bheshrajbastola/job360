@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../model/name_model.dart';
 
-class MyApp extends StatefulWidget {
+class Name extends StatefulWidget {
+  const Name({super.key});
+
   @override
-  _MyAppState createState() => _MyAppState();
+  _NameState createState() => _NameState();
 }
 
-class _MyAppState extends State<MyApp> {
-  NameChanger _nameChanger = NameChanger();
+class _NameState extends State<Name> {
+  final NameChanger _nameChanger = NameChanger();
 
   void _changeName() {
     setState(() {
@@ -22,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Change Name App"),
+          title: const Text("Change Name App"),
         ),
         body: Center(
           child: Column(
@@ -30,12 +32,12 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               Text(
                 _nameChanger.getName(),
-                style: TextStyle(fontSize: 32),
+                style: const TextStyle(fontSize: 32),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _changeName,
-                child: Text("Change Name"),
+                child: const Text("Change Name"),
               ),
             ],
           ),

@@ -1,86 +1,77 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+// import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+// void main() {
+//   runApp(const MyApp());
+// }
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-class _HomePageState extends State<HomePage> {
-  final TextEditingController firstController = TextEditingController();
-  final TextEditingController secondController = TextEditingController();
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(home: Home());
+//   }
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    int result = 0;
+// class Home extends StatefulWidget {
+//   const Home({super.key});
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Calculator App'),
-      ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        color: Colors.green,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: firstController,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: 'First Number'),
-              keyboardType: TextInputType.number,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextField(
-              controller: secondController,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: 'Second Number'),
-              keyboardType: TextInputType.number,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    int a = int.parse(firstController.text);
-                    int b = int.parse(secondController.text);
-                    setState(() {
-                      result = a + b;
-                    });
-                  },
-                  child: const Text('Add'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    int a = int.parse(firstController.text);
-                    int b = int.parse(secondController.text);
+//   @override
+//   State<Home> createState() => _HomeState();
+// }
 
-                    setState(() {
-                      result = a - b;
-                    });
-                  },
-                  child: Text('Sub'),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Mul'),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text('Result :$result')
-          ],
-        ),
-      ),
-    );
-  }
-}
+// class _HomeState extends State<Home> {
+//   String? gender; //no radio button will be selected
+//   //String gender = "male"; //if you want to set default value
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Radio Button in Flutter"),
+//         backgroundColor: Colors.deepOrangeAccent,
+//       ),
+//       body: Container(
+//         padding: const EdgeInsets.all(20),
+//         child: Column(
+//           children: [
+//             const Text(
+//               "What is your gender?",
+//               style: TextStyle(fontSize: 18),
+//             ),
+//             const Divider(),
+//             RadioListTile(
+//               title: const Text("Male"),
+//               value: "male",
+//               groupValue: gender,
+//               onChanged: (value) {
+//                 setState(() {
+//                   gender = value.toString();
+//                 });
+//               },
+//             ),
+//             RadioListTile(
+//               title: const Text("Female"),
+//               value: "female",
+//               groupValue: gender,
+//               onChanged: (value) {
+//                 setState(() {
+//                   gender = value.toString();
+//                 });
+//               },
+//             ),
+//             RadioListTile(
+//               title: const Text("Other"),
+//               value: "other",
+//               groupValue: gender,
+//               onChanged: (value) {
+//                 setState(() {
+//                   gender = value.toString();
+//                 });
+//               },
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
