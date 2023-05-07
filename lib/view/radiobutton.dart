@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
                 });
               },
             ),
-            RadioListTile(
+          RadioListTile(
               title: const Text("Female"),
               value: "female",
               groupValue: gender,
@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
               onChanged: (value) {
                 setState(() {
                   gender = value.toString();
-                });
+                });  
               },
             )
           ],

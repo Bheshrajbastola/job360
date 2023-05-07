@@ -4,11 +4,14 @@ import 'package:job360/view/circle_view.dart';
 import 'package:job360/view/coloum_view.dart';
 import 'package:job360/view/container-view.dart';
 import 'package:job360/view/dashboard.dart';
+import 'package:job360/view/display_student.dart';
 import 'package:job360/view/load-image.dart';
 import 'package:job360/view/output.dart';
 import 'package:job360/view/radiobutton.dart';
 import 'package:job360/view/richtext_view.dart';
 import 'package:job360/view/si_view.dart';
+import 'package:job360/view/student_view.dart';
+import 'package:job360/view/ui.dart';
 
 import 'view/airthematic_view.dart';
 
@@ -32,6 +35,9 @@ class App extends StatelessWidget {
         '/outputRoute': (context) => const Output(),
         '/containerRoute': (context) => const container(),
         '/imageRoute': (context) => const LoadImageView(),
+        '/interfaceRoute': (context) => const Interface(),
+        '/studentviewRoute': (context) => const StudentView(),
+        '/displayRoute': (context) => const DisplayStudentView(),
       },
     );
   }
