@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../common/show_my_message.dart';
 import '../model/airthematic.dart';
 
 class AirthematicView extends StatefulWidget {
@@ -43,6 +44,8 @@ class _AirthematicViewState extends State<AirthematicView> {
         int.parse(secondController.text),
       );
     });
+    showMySnackBar(context, 'Sum is $result');
+
     Navigator.pushNamed(context, '/outputRoute', arguments: result);
   }
 
@@ -54,6 +57,7 @@ class _AirthematicViewState extends State<AirthematicView> {
         int.parse(secondController.text),
       );
     });
+    showMySnackBar(context, 'Sum is $result', color: Colors.red);
   }
 
   final myKey = GlobalKey<FormState>();
