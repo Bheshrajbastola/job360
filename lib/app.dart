@@ -33,7 +33,7 @@ class App extends StatelessWidget {
         '/NamedRoute': (context) => const Name(),
         '/TextRoute': (context) => const RichTextView(),
         '/ColoumnRoute': (context) => const ColoumView(),
-        '/radioRoute': (context) => const radiobtn(),
+        '/radioRoute': (context) => const Radiobtn(),
         '/outputRoute': (context) => const Output(),
         '/containerRoute': (context) => const container(),
         '/imageRoute': (context) => const LoadImageView(),
